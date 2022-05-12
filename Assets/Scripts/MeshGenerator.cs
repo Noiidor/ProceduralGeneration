@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,13 +27,13 @@ public class MeshGenerator : MonoBehaviour
 	}
 
 	private void FixedUpdate()
-    {
+	{
 		GenerateShape();
 		UpdateMesh();
 	}
 
 
-    private void GenerateShape()
+	private void GenerateShape()
 	{
 		vertices = new Vector3[(xSize + 1) * (zSize + 1)];
 
@@ -82,15 +82,15 @@ public class MeshGenerator : MonoBehaviour
 		mesh.RecalculateNormals();
 	}
 
-    private void OnDrawGizmos()
-    {
-        if (vertices == null)
-        {
+	private void OnDrawGizmos()
+	{
+		if (vertices == null)
+		{
 			return;
-        }
-        for (int i = 0; i < vertices.Length; i++)
-        {
+		}
+		for (int i = 0; i < vertices.Length; i++)
+		{
 			Gizmos.DrawSphere(vertices[i], 0.1f);
-        }
-    }
+		}
+	}
 }
