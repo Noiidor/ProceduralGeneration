@@ -7,4 +7,14 @@ using UnityEngine;
 public class ShapeSettings : ScriptableObject
 {
     public float planetRadius = 10f;
+    public NoiseLayer[] noiseLayers;
+
+    [System.Serializable]
+    public class NoiseLayer
+    {
+        public string name;
+        public bool enabled = true;
+        public bool useFirstLayerAsMask;
+        public NoiseSettings noiseSettings;
+    }
 }

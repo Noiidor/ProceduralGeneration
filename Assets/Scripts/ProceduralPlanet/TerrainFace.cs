@@ -47,7 +47,7 @@ public class TerrainFace
                 pointOnUnitSphere.x = pointOnUnitCube.x * Mathf.Sqrt(1f - y2 / 2f - z2 / 2f + y2 * z2 / 3f);
                 pointOnUnitSphere.y = pointOnUnitCube.y * Mathf.Sqrt(1f - x2 / 2f - z2 / 2f + x2 * z2 / 3f);
                 pointOnUnitSphere.z = pointOnUnitCube.z * Mathf.Sqrt(1f - x2 / 2f - y2 / 2f + x2 * y2 / 3f);
-                normals[i] = pointOnUnitSphere;
+                //normals[i] = pointOnUnitSphere;
                 vertices[i] = shapeGenerator.CalculatePointOnPlanet(pointOnUnitSphere);
 
 
@@ -67,7 +67,7 @@ public class TerrainFace
         mesh.Clear();
         mesh.vertices = vertices;
         mesh.triangles = triangles;
-        mesh.normals = normals;
-        //mesh.RecalculateNormals();
+        //mesh.normals = normals;
+        mesh.RecalculateNormals();
     }
 }
