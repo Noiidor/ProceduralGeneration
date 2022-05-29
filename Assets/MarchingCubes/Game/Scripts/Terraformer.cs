@@ -78,7 +78,6 @@ public class Terraformer : MonoBehaviour
 		// Add terrain
 		if (Input.GetMouseButton(0))
 		{
-			Debug.Log("Terraformed0");
 			isTerraforming = true;
 			genTest.Terraform(terraformPoint, -weight, terraformRadius);
 			//firstPersonController.NotifyTerrainChanged(terraformPoint, terraformRadius);
@@ -86,7 +85,6 @@ public class Terraformer : MonoBehaviour
 		// Subtract terrain
 		else if (Input.GetMouseButton(1))
 		{
-			Debug.Log("Terraformed1");
 			isTerraforming = true;
 			genTest.Terraform(terraformPoint, weight, terraformRadius);
 		}

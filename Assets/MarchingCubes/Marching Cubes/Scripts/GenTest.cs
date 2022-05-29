@@ -12,6 +12,8 @@ public class GenTest : MonoBehaviour
 
 	public int numPointsPerAxis = 10;
 	public float boundsSize = 10;
+	public float noiseRadius;
+	public float floorHeight;
 	public float isoLevel = 0f;
 	public bool useFlatShading;
 
@@ -115,8 +117,11 @@ public class GenTest : MonoBehaviour
 		int textureSize = rawDensityTexture.width;
 
 		densityCompute.SetInt("textureSize", textureSize);
-
+		Debug.Log(boundsSize);
 		densityCompute.SetFloat("planetSize", boundsSize);
+		densityCompute.SetVector("center", transform.position);
+		densityCompute.SetFloat("noiseRadius", noiseRadius);
+		densityCompute.SetFloat("floorHeight", floorHeight);
 		densityCompute.SetFloat("noiseHeightMultiplier", noiseHeightMultiplier);
 		densityCompute.SetFloat("noiseScale", noiseScale);
 

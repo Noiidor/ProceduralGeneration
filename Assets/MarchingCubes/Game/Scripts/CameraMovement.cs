@@ -24,10 +24,22 @@ public class CameraMovement : MonoBehaviour
         Vector3 moveVector = transform.right * moveX + transform.forward * moveZ;
         //Vector3 moveVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         camera.transform.position += moveVector;
-        float lookX = Input.GetAxis("Mouse X") * 5;
-        float lookY = Input.GetAxis("Mouse Y") * 5;
-        xRotation -= lookY;
-        yRotation += lookX;
+        if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
+        {
+            float lookX = Input.GetAxis("Mouse X");
+            float lookY = Input.GetAxis("Mouse Y");
+            xRotation -= lookY;
+            yRotation += lookX;
+        }
+        else
+        {
+            float lookX = Input.GetAxis("Mouse X") * 5;
+            float lookY = Input.GetAxis("Mouse Y") * 5;
+            xRotation -= lookY;
+            yRotation += lookX;
+        }
+        
+        
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         //camera.transform.Rotate(transform.up * lookX);
         camera.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);

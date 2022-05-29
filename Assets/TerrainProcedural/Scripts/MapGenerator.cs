@@ -14,6 +14,7 @@ public class MapGenerator : MonoBehaviour
 	[Range(0f, 1f)]
 	public float persistance;
 	public float lacunarity;
+	public float warpStrenght;
 	public int seed;
 	public Vector2 offset;
 
@@ -23,7 +24,7 @@ public class MapGenerator : MonoBehaviour
 
 	public void GenerateMap()
 	{
-		float[,] noiseMap = PlaneNoise.GenerateNoiseMap(mapWidth, mapHeight, seed, noiseScale, octaves, persistance, lacunarity, offset);
+		float[,] noiseMap = PlaneNoise.GenerateNoiseMap(mapWidth, mapHeight, seed, noiseScale, octaves, persistance, lacunarity, warpStrenght, offset);
 
 		Color[] colorMap = new Color[mapWidth * mapHeight];
         for (int y = 0; y < mapHeight; y++)

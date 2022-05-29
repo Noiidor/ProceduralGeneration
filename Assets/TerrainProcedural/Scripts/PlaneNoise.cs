@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class PlaneNoise
 {
-	public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight, int seed, float scale, int octaves, float persistance, float lacunarity, Vector2 offset)
+	public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight, int seed, float scale, int octaves, float persistance, float lacunarity, float warpStrenght, Vector2 offset)
 	{
 		float[,] noiseMap = new float[mapWidth, mapHeight];
 
@@ -41,7 +41,9 @@ public static class PlaneNoise
 					float sampleX = (x-halfWidth) / scale * frequency + octaveOffsets[i].x;
 					float sampleY = (y-halfHeight) / scale * frequency + octaveOffsets[i].y;
 
-					float perlinValue = Mathf.PerlinNoise(sampleX, sampleY) * 2 - 1;
+					float warpX = Mathf.PerlinNoise(sampleX, sampleY);
+					float warpY = Mathf.PerlinNoise(sampleX + 5, sampleY + 5);
+					float perlinValue = Mathf.PerlinNoise(sampleX + warpStrenght*warpX, sampleY + warpStrenght*warpY) * 2 - 1;
 					noiseHeight += perlinValue * amplitude;
 
 					amplitude *= persistance;
